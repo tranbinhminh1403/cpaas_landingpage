@@ -16,7 +16,7 @@ const PricingContent: PricingContentProps[] = [
         description: "Pay as you go. Get $25 credits and a complimentary phone number to try Sent today.",
         price: "$0.015",
         per: "Per Contact",
-        button: <Button className="w-full">Get Started Now</Button>,
+        button: <Button className="w-full cursor-pointer">Get Started Now</Button>,
         list: [
             "Up to 25k monthly active contacts",
             "All features included",
@@ -27,7 +27,7 @@ const PricingContent: PricingContentProps[] = [
         title: "Enterprise Ready",
         description: "Scale confidently with a custom messaging platform designed for enterprise-grade performance.",
         price: "Custom",
-        button: <Button variant="outline" className="w-full">Talk to Sales</Button>,
+        button: <Button variant="outline" className="w-full cursor-pointer">Talk to Sales</Button>,
         list: [
             "Unlimited monthly contacts with volume-based discounts",
             "Priority support with <1h response time",
@@ -38,7 +38,7 @@ const PricingContent: PricingContentProps[] = [
 
 const PricingCard = ({ content }: { content: PricingContentProps }) => {
     return (
-        <div className="p-6 pt-0 rounded-xl text-card-foreground shadow group relative overflow-hidden border border-white/4 bg-white/[0.15] backdrop-blur-[12px] transition-all duration-500 hover:bg-white/40 transform-gpu dark:bg-black dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-40px_120px_-40px_#ffffff1f_inset] before:absolute before:inset-0 before:opacity-0 before:[background:radial-gradient(circle_at_center,var(--color-one),transparent_70%)] before:[filter:blur(120px)] group-hover:before:opacity-20">
+        <div className="p-6 pt-0 rounded-xl text-card-foreground shadow group relative overflow-hidden border border-white/4 bg-white/[0.15] backdrop-blur-[12px] hover:bg-white/40 transform-gpu dark:bg-black dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-40px_120px_-40px_#ffffff1f_inset]">
             <h3 className="font-semibold leading-none tracking-tight ">
                 <p className="text-2xl font-bold mb-4 bg-gradient-to-br dark:from-white dark:to-white/50 bg-clip-text text-transparent">
                     {content.title}
@@ -48,7 +48,7 @@ const PricingCard = ({ content }: { content: PricingContentProps }) => {
                 </p>
             </h3>
 
-            <div className="flex flex-row">
+            <div className="flex flex-row gap-2 my-6">
                 <p className="text-4xl font-bold bg-gradient-to-br from-black dark:from-white to-black/40 dark:to-white/50 bg-clip-text text-transparent">
                     {content.price}
                 </p>
@@ -56,12 +56,13 @@ const PricingCard = ({ content }: { content: PricingContentProps }) => {
                     {content.per}
                 </p>
             </div>
-
-            {content.button}
+            <div className="my-6">
+                {content.button}
+            </div>
 
             <ul className="space-y-4">
                 {content.list.map((item, index) => (
-                    <li key={index} className="flex gap-2 text-zinc-400 items-center"><Check />{item}</li>
+                    <li key={index} className="flex gap-2 text-zinc-400 items-center"><Check size={20} className="min-w-[20px]" />{item}</li>
                 ))}
             </ul>
         </div>
