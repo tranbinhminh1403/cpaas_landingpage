@@ -1,6 +1,8 @@
 import { Blocks, CircleDollarSign, MessageCircleCode, Webhook } from "lucide-react";
-import { FeatureContent } from "./FeatureConten";
-import { FeatureContentProps } from "./FeatureConten";
+import { FeatureContent } from "./FeatureContent";
+import { FeatureContentProps } from "./FeatureContent";
+import FeatureCarousel from "./FeatureCarousel";
+import CodeCarousel from "./CodeCarousel";
 
 const data: FeatureContentProps[] = [
   {
@@ -14,6 +16,7 @@ const data: FeatureContentProps[] = [
     title: "Seamless Cross-Channel Delivery",
     description:
       "Sent identifies the best messaging channel to reach a contact, and transforms message content to match schema requirements.",
+    bg: <FeatureCarousel />,
   },
   {
     icon: <Blocks />,
@@ -26,6 +29,7 @@ const data: FeatureContentProps[] = [
     title: "Modular Webhooks",
     description:
       "Get real-time notifications for every message event.",
+    bg: <CodeCarousel />,
   },
 ];
 
@@ -41,22 +45,17 @@ export const Features = () => {
           business messaging while providing a first-class developer experience.
         </h3>
         <div className="grid w-full auto-rows-[22rem] grid-cols-3 gap-4">
-          <div className="group relative flex flex-col justify-between overflow-hidden rounded-xl [box-shadow:0_0_0_1px_rgba(0,0,0,.03),0_2px_4px_rgba(0,0,0,.05),0_12px_24px_rgba(0,0,0,.05)] transform-gpu dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#ffffff1f_inset] col-span-3 lg:col-span-1">
-            <div></div>
-            <FeatureContent content={data[0]} />
-          </div>
-          <div className="group relative flex flex-col justify-between overflow-hidden rounded-xl [box-shadow:0_0_0_1px_rgba(0,0,0,.03),0_2px_4px_rgba(0,0,0,.05),0_12px_24px_rgba(0,0,0,.05)] transform-gpu dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#ffffff1f_inset] col-span-3 lg:col-span-2">
-            <div></div>
-            <FeatureContent content={data[1]} />
-          </div>
-          <div className="group relative flex flex-col justify-between overflow-hidden rounded-xl [box-shadow:0_0_0_1px_rgba(0,0,0,.03),0_2px_4px_rgba(0,0,0,.05),0_12px_24px_rgba(0,0,0,.05)] transform-gpu dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#ffffff1f_inset] col-span-3 lg:col-span-2">
-            <div></div>
-            <FeatureContent content={data[2]} />
-          </div>
-          <div className="group relative flex flex-col justify-between overflow-hidden rounded-xl [box-shadow:0_0_0_1px_rgba(0,0,0,.03),0_2px_4px_rgba(0,0,0,.05),0_12px_24px_rgba(0,0,0,.05)] transform-gpu dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#ffffff1f_inset] col-span-3 lg:col-span-1">
-            <div></div>
-            <FeatureContent content={data[3]} />
-          </div>
+          {data.map((item, index) => (
+            <div
+              key={index}
+              className={`group relative flex flex-col justify-between overflow-hidden rounded-xl [box-shadow:0_0_0_1px_rgba(0,0,0,.03),0_2px_4px_rgba(0,0,0,.05),0_12px_24px_rgba(0,0,0,.05)] transform-gpu dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#ffffff1f_inset] col-span-3 ${
+                index === 0 || index === data.length - 1 ? "lg:col-span-1" : "lg:col-span-2"
+              }`}
+            >
+              {item.bg? <div className="flex justify-end">{item.bg}</div>: <div></div>}
+              <FeatureContent content={item} />
+            </div>
+          ))}
         </div>
       </div>
     </div>

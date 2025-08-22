@@ -1,6 +1,7 @@
-import { AppLogo } from "../icon/AppLogo";
-import { Github } from "../icon/Github";
-import { Twitter } from "../icon/Twitter";
+import Link from "next/link";
+import { AppLogo } from "@/components/icon/AppLogo";
+import { Github } from "@/components/icon/Github";
+import { Twitter } from "@/components/icon/Twitter";
 
 const nav = [
   {
@@ -100,8 +101,8 @@ export const Footer = () => {
         <div className="grid grid-cols-1 gap-8 sm:gap-10 sm:grid-cols-4">
           {nav.map((item, index) => (
             <div key={index}>
-              <h3 className="text-sm font-medium uppercase">{item.title}</h3>
-              <ul className="mt-2 space-y-2">
+              <h3 className="text-sm font-medium uppercase mb-6">{item.title}</h3>
+              <ul className="space-y-2">
                 {item.list.map((listItem, listIndex) => (
                   <li key={listIndex}>
                     <a
@@ -120,12 +121,12 @@ export const Footer = () => {
 
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between rounded-md border-neutral-700/20 py-4 px-8 gap-2">
         <div className="flex flex-row gap-5">
-          <a href=""className="text-zinc-500 hover:text-zinc-600 fill-zinc-500 hover:fill-zinc-600">
+          <Link href="/"className="text-zinc-500 hover:text-zinc-600 fill-zinc-500 hover:fill-zinc-600">
             <Github/>
-          </a>
-          <a href=""className="text-zinc-500 hover:text-zinc-600 fill-zinc-500 hover:fill-zinc-600">
+          </Link>
+          <Link href="/"className="text-zinc-500 hover:text-zinc-600 fill-zinc-500 hover:fill-zinc-600">
             <Twitter/>
-          </a>
+          </Link>
         </div>
         <p className="text-sm sm:text-center text-zinc-400">© 2025 Sent.dm. All rights reserved.</p>
       </div>

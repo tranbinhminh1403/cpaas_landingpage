@@ -1,14 +1,16 @@
 import { Button } from "@/components/ui/button";
+import { ArrowIcon } from "../icon/ArrowIcon";
 
 export type FeatureContentProps = {
     title: string;
     description: string;
     icon: React.ReactNode;
+    bg?: React.ReactNode;
 }
 
 export const FeatureContent = ( { content }: { content : FeatureContentProps } ) => {
   return (
-    <div>
+    <div className="fixed z-10 bottom-0">
       <div className="pointer-events-none z-10 flex transform-gpu flex-col gap-1 p-6 transition-all duration-300 group-hover:-translate-y-10">
         {content.icon}
         <h3 className="text-xl font-semibold text-neutral-700 dark:text-neutral-300">
@@ -21,10 +23,10 @@ export const FeatureContent = ( { content }: { content : FeatureContentProps } )
       <div className="absolute bottom-0 flex w-full translate-y-10 transform-gpu flex-row items-center p-4 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
         <Button
           size="lg"
-          variant="ghost"
+          variant="outline"
           className="cursor-pointer font-medium"
         >
-          Get started now
+          Get started now <ArrowIcon />
         </Button>
       </div>
     </div>
